@@ -21,6 +21,23 @@
     z-index: 10;
 }
 
+.app-wrapper .sticky-navbar-mobile .mobile-menu {
+  color: white;
+}
+
+.app-wrapper .sidenav-content > ul {
+  color: inherit;
+  margin-top: 75px;
+}
+
+.app-wrapper .sidenav-content > ul li {
+  padding: 10px 20px;
+}
+
+.app-wrapper .sidenav-content > ul li:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .app-wrapper ul.nav-bar-items li {
   margin-right: 20px;
   text-transform: uppercase;

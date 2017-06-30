@@ -1,7 +1,7 @@
 <div class="app-wrapper">
 
     <!--menu navigation for desktop view-->
-    <nav class="sticky-navbar" [@stickyNavBarAnimation]='state' hide-sm hide-xs>
+    <nav class="sticky-navbar" [@stickyNavBarAnimation]='stickyHeaderState' hide-sm hide-xs>
         <div flex="60" layout-gt-sm="row" layout-sm="column" layout-xs="column" layout-align="space-between center" layout-fill>
             <div class="nav-bar-header" flex>
                 <a href="#home">SmallDOT.com</a>
@@ -18,57 +18,63 @@
 
     <!--menu navigation for mobile-->
     <nav class="sticky-navbar-mobile" hide-gt-sm>
-        <div class="mobile-menu">
-            <button md-button (click)="sidenav.open()">
-                Open sidenav
-                </button>
+        <div class="mobile-menu" layout="row" layout-align="space-between center" layout-padding>
+            <button class="btn" aria-hidden="true" (click)="toggleSideNav()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-bar-header">SmallDOT.com</div>
         </div>
     </nav>
 
-    <md-sidenav-container>
-
-        <md-sidenav #sidenav class="sidenav-content">
-            <!--sidenav content here-->
-        </md-sidenav>
-
-        <div id="home">
-            <app-home></app-home>
+    <div class="sidenav-wrapper">
+        <div class="sidenav-content" [@sidebarNavigation]='sidenavigationState'>
+            <ul class="nav-bar-items" layout="column" hide-gt-sm>
+                <li (click)="toggleSideNav()"><a href="#services">services</a></li>
+                <li (click)="toggleSideNav()"><a href="#portfolios">portfolio</a></li>
+                <li (click)="toggleSideNav()"><a href="#about">about</a></li>
+                <!--<li><a href="#team">team</a></li>-->
+                <li (click)="toggleSideNav()"><a href="#contact">contact</a></li>
+            </ul>
         </div>
+    </div>
 
-        <div id="services" class="component-container" >
-            <app-my-services></app-my-services>
-        </div>
+    <div id="home">
+        <app-home></app-home>
+    </div>
 
-        <div id="portfolios" class="component-container bg-light-gray">
-            <app-portfolio></app-portfolio>
-        </div>
+    <div id="services" class="component-container">
+        <app-my-services></app-my-services>
+    </div>
 
-        <div id="about" class="component-container">
-            <app-about></app-about>
-        </div>
+    <div id="portfolios" class="component-container bg-light-gray">
+        <app-portfolio></app-portfolio>
+    </div>
 
-        <!--<div id="team" class="component-container bg-light-gray">
+    <div id="about" class="component-container">
+        <app-about></app-about>
+    </div>
+
+    <!--<div id="team" class="component-container bg-light-gray">
             <app-team></app-team>
         </div>-->
 
-        <div id="contact" class="component-container bg-light-gray">
-            <app-contact-us></app-contact-us>
+    <div id="contact" class="component-container bg-light-gray">
+        <app-contact-us></app-contact-us>
+    </div>
+
+
+    <footer layout-gt-sm="row" layout-sm="column" layout-xs="column" layout-align="center center" id="page-footer">
+        <div id="copy-right" flex>
+            Copyright © darrelabello.com 2016
         </div>
-
-
-        <footer layout-gt-sm="row" layout-sm="column" layout-xs="column"
-            layout-align="center center" id="page-footer">
-            <div id="copy-right" flex>
-                Copyright © darrelabello.com 2016
-            </div>
-            <div id="social-links" layout="row" layout-align="center center" flex>
-                <i class="fa fa-twitter-square" style="font-size:36px"></i>
-                <i class="fa fa-linkedin-square" style="font-size:36px; margin: 0 10px;"></i>
-                <i class="fa fa-facebook-square" style="font-size:36px"></i>
-            </div>
-            <div id="terms_and_condition" flex>
-                terms and condition
-            </div>
-        </footer>
-    </md-sidenav-container>
+        <div id="social-links" layout="row" layout-align="center center" flex>
+            <i class="fa fa-twitter-square" style="font-size:36px"></i>
+            <i class="fa fa-linkedin-square" style="font-size:36px; margin: 0 10px;"></i>
+            <i class="fa fa-facebook-square" style="font-size:36px"></i>
+        </div>
+        <div id="terms_and_condition" flex>
+            terms and condition
+        </div>
+    </footer>
 </div>

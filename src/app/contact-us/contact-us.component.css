@@ -1,0 +1,14 @@
+.contact-us-wrapper {
+
+}
+
+.contact-us-wrapper #comments {
+    text-align: center;
+}
+
+.contact-us-wrapper #comments .fb-comments {
+    width: 100%;
+}
+.contact-us-wrapper #comments > iframe {
+    width: 100% !important;
+}

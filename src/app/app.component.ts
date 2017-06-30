@@ -1,6 +1,6 @@
 import { Component, HostListener, ViewEncapsulation } from '@angular/core';
-
-import { stickyNavBarAnimation } from './_animations/index'
+import {Router} from '@angular/router';
+import { stickyNavBarAnimation, sidebarNavigation } from './_animations/index';
 
 declare var $:any;
 
@@ -10,21 +10,30 @@ declare var $:any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  animations: [ stickyNavBarAnimation ]
+  animations: [ stickyNavBarAnimation, sidebarNavigation ]
 })
 export class AppComponent {
-    state: string = 'init';
+    stickyHeaderState: string = 'init';
+    sidenavigationState: string = 'close';
+    parentRouter = Router;
 
+    toggleSideNav = function () {
+        if (this.sidenavigationState == 'close') {
+          this.sidenavigationState = 'open';
+        } else {
+          this.sidenavigationState = 'close';
+        }
+    }
 
     @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
       var currentScrolltop = $($event.currentTarget).scrollTop();
 
       if (currentScrolltop > 100 && currentScrolltop < 200) {
-        this.state = 'partial-scrolled';
+        this.stickyHeaderState = 'partial-scrolled';
       } else if (currentScrolltop >= 200) {
-        this.state = 'scrolled';
+        this.stickyHeaderState = 'scrolled';
       } else {
-        this.state = 'init';
+        this.stickyHeaderState = 'init';
       }
     } 
 }
